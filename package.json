@@ -1,0 +1,30 @@
+{
+  "name": "kplrtest",
+  "version": "1.0.0",
+  "description": "A webhook that handle payment tickets",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "nodemon index.ts",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lolhomme/kplrTest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lolhomme/kplrTest/issues"
+  },
+  "homepage": "https://github.com/Lolhomme/kplrTest#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.2"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.11",
+    "express": "^4.17.1"
+  }
+}
