@@ -1,5 +1,5 @@
 export interface ITicket {
-    orderNumber: number
+    orderNumber: number | null
     vat: number
     total: number
     info?: string

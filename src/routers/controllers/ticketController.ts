@@ -10,18 +10,30 @@ const router: express.Router = express.Router();;
 const dbutils: database = new database();
 
 async function parseTicketData(rawData: string): Promise<ITicket> {
-   let ticket: ITicket = { orderNumber: 0, vat: 0, total: 0 };
+   let ticket: ITicket = { orderNumber: null, vat: 0, total: 0 };
    const arrTicket: string[] = rawData.split(/\n/);
    arrTicket.forEach((data: string) => {
       if (data.startsWith('Order')) {
-         ticket.orderNumber = parseInt(data.replace('Order:', '').trim());
+         if (!isNaN(parseInt(data.replace('Order:', '').trim()))) {
+            ticket.orderNumber = parseInt(data.replace('Order:', '').trim());
+         } else {
+            ticket.info = 'Non conform ticket, data missing';
+         }
       } else if (data.startsWith('VAT')) {
-         ticket.vat = parseFloat(data.replace('VAT:', '').trim());
+         if (!isNaN(parseFloat(data.replace('VAT:', '').trim()))) {
+            ticket.vat = parseFloat(data.replace('VAT:', '').trim());
+         } else {
+            ticket.info = 'Non conform ticket, data missing';
+         }
       } else if (data.startsWith('Total')) {
-         ticket.total = parseFloat(data.replace('Total:', '').trim());
+         if (!isNaN(parseFloat(data.replace('Total:', '').trim()))) {
+            ticket.total = parseFloat(data.replace('Total:', '').trim());
+         } else {
+            ticket.info = 'Non conform ticket, data missing';
+         }
       } else {
          // we dont want to loose any ticket, so we return a 0 values ticket with an info of non conform ticket
-         ticket.info = 'Non conform ticket, data missing'
+         ticket.info = 'Non conform ticket, data missing';
       }
    })
 

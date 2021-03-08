@@ -40,7 +40,7 @@ export default class Server {
                 CREATE TABLE IF NOT EXISTS ticket
                 (
                     id SERIAL PRIMARY KEY,
-                    ordernumber integer UNIQUE NOT NULL,
+                    ordernumber integer UNIQUE NULL,
                     vat decimal NOT NULL,
                     total decimal NOT NULL,
                     metadata text NULL
