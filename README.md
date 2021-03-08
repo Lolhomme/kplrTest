@@ -19,6 +19,7 @@ PGPORT=5432
 PORT=3000
 ```
 
+## Run application
+- npm install
 - npm run build
 - npm start
-
